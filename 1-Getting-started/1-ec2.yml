@@ -5,7 +5,7 @@ Resources:
   MyEC2Instance:
     Type: "AWS::EC2::Instance"
     Properties: 
-      ImageId: "ami-0022f774911c1d690"
+      ImageId: "ami-00c39f71452c08778"
       InstanceType: t2.micro      
       BlockDeviceMappings:
         -
@@ -13,4 +13,4 @@ Resources:
           Ebs:
             VolumeType: gp2            
             DeleteOnTermination: true
-            VolumeSize: 8
+            VolumeSize: 10 
