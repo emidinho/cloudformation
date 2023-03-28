@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: "version date"
+AWSTemplateFormatVersion: "2010-09-09"
 
 Description:
   String
