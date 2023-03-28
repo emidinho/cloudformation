@@ -3,3 +3,53 @@
 # Webserver with 8gb EBS
 # Appserver with 10gb EBS
 # One S3 bucket to store invoice pdf files
+AWSTemplateFormatVersion: 2010-09-09
+Description: hands-on task to create the cloudformation stack with 2 EC2 instances(webserver with ebs=8gb & appserver with ebs=10gb) and 1 s3 bucket
+
+Resources:
+  myec2:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      AvailabilityZone: "us-east-1a"
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2
+            DeleteOnTermination: true
+            VolumeSize: 8
+      IamInstanceProfile: "EC2-AmazonS3ReadOnlyAccess"
+      ImageId: "ami-00c39f71452c08778"
+      InstanceType: "t2.micro"
+      KeyName: "linux-keypair"
+      Tags:
+        - Key: Name
+          Value: webserver
+
+  newmyec2:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      AvailabilityZone: "us-east-1a"
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2
+            DeleteOnTermination: true
+            VolumeSize: 10
+      IamInstanceProfile: "EC2-AmazonS3ReadOnlyAccess"
+      ImageId: "ami-00c39f71452c08778"
+      InstanceType: "t2.micro"
+      KeyName: "linux-keypair"
+      Tags:
+        - Key: Name
+          Value: appserver
+
+  mys3:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: "Private"
+      BucketName: "emi-buc-cf"
+      Tags:
+        - Key: Name
+          Value: new-buc-cf
