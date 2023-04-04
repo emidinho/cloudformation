@@ -88,8 +88,7 @@ Resources:
       InstanceType:  !FindInMap [EC2TypeBasedOnEnv, !Ref Environment, instanceType]
       SecurityGroups:
       - Ref: InstanceSecurityGroup
-      KeyName:
-        Ref: !FindInMap [EC2TypeBasedOnEnv, !Ref Environment, keyName]      
+      KeyName: !FindInMap [EC2TypeBasedOnEnv, !Ref Environment, keyName]      
       BlockDeviceMappings:
         -
           DeviceName: /dev/xvda
