@@ -24,12 +24,7 @@ Parameters:
     Default: 8
     MinValue: 8
     MaxValue: 100
-    ConstraintDescription: must be a number between 8 to 100 Gb
-
-  KeyName:
-    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
-    Type: AWS::EC2::KeyPair::KeyName
-    ConstraintDescription: must be the name of an existing EC2 KeyPair.  
+    ConstraintDescription: must be a number between 8 to 100 Gb  
   
   SecurityGroupPorts:
     Description: Simple Description of a Number Parameter, with MinValue and MaxValue
